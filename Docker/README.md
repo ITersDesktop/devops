@@ -71,7 +71,7 @@ This approach is recyled from [the answer](https://stackoverflow.com/a/43548695/
 vim scp://remoteuser@containerip//path/to/document
 ```
 
-### R006: How to tell docker container connecting to the databasee server of host machine ###
+### R006: How to tell docker container connecting to the database server of host machine ###
 **Context**: If you want to gather data in a unique place, thee database server should be installed on the host machine so that all applications running on docker containers are able to connect to. How to make it done?
 
 **Solutions**
@@ -82,3 +82,42 @@ vim scp://remoteuser@containerip//path/to/document
 spring.datasource.url=jdbc:mysql://host.docker.internal:8889/apidb
 ```
 
+### R007: How to install mysql-client in the container ###
+
+**Context**: You want to test connection to MySQL database server, how can we install `mysql-client` into the application container.
+
+**Solutions**
+
+From [the answer](https://superuser.com/a/1186582/193851), you have to insert the following command into Dockerfile.
+
+```
+RUN apt-get update \
+  && apt-get install -y mysql-client \
+  && rm -rf /var/lib/apt
+```
+
+### R008: How to run Redis Server in a container ###
+
+```
+docker pull redis:5.0.3-alpine3.9
+docker run --name redis_master -d redis:5.0.3-alpine3.9 -p 6379:6379
+
+```
+
+### R009: How to run BioModels on a Docker container
+
+```
+# create a network named mynet
+docker network create mynet
+
+# connect redis_master container which is running  to this network
+docker network connect mynet redis_master
+
+# run BioModels image in this network with --network option
+docker run -it --rm \
+  --name biomodels --network mynet \
+  --env JUMMP_CONFIG="/mnt/jummp/docker/jummp.properties" \
+  -p 8080:8080 \
+  -v C:/Users/tnguyen/GoogleOne/tnguyen/BioModels/Jummp:/mnt/jummp \
+  biomodels:latest
+```
