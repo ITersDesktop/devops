@@ -49,7 +49,7 @@ To optimise the image in question, we should define a long command as below.
 ```
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    net-tools vim \
+    net-tools vim telnet \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 ```
@@ -120,4 +120,11 @@ docker run -it --rm \
   -p 8080:8080 \
   -v C:/Users/tnguyen/GoogleOne/tnguyen/BioModels/Jummp:/mnt/jummp \
   biomodels:latest
+```
+
+### R010: What is the simple way to test the database connection?
+
+This tip is often preserved to anyone who wants to verify the connection between the host and the database server. The database host could be in the same cluster or the central pool. The following command is the simple way to do so.
+```
+telnet mysql-proteomics-biomodels-prod.ebi.ac.uk 1234
 ```
