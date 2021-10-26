@@ -13,6 +13,12 @@ Using options `-o wide` and `--show-labels=true`, we can combine different types
 kubectl -n bmdev get pvc,svc,po,deployment,ingress,configmap --show-labels=true -o wide
 ```
 
+### How to show logs from a pod or an application
+We usually run `kubectl logs -f jummp-7d9df54b74-5tk5g` where `jummp-7d9df54b74-5tk5g` is the name of your specific pod. However, if your application has been replicated multiple nodes, it means that we tend to see the logs produced from these pods, i.e. this application, instead of a specific pod. In this situation, we should add the option `-l app=jummp` to tell K8s client where it has to get the logs. In this example, `-l` means enabling the label `app=jummp`. The full command looks like:
+
+```
+kubectl logs -f -l app=jummp
+```
 
 ### How to manage multiple installed versions of kubectl
 Read 
