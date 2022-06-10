@@ -19,6 +19,18 @@ We usually run `kubectl logs -f jummp-7d9df54b74-5tk5g` where `jummp-7d9df54b74-
 ```
 kubectl logs -f -l app=jummp
 ```
+To ease our daily routine, we can define a bash function in `.bashrc` or `.zshrc` like:
+```
+function k8logs() {
+  if [ $# -eq 0 ]
+  then
+    printf "Error: missing a deploy. \nUsage: k8ns deploy\n"
+  else
+    kubectl logs -f -l app=$1
+  fi
+}
+```
+To use this function, just type `k8logs jummp`. That's it!
 
 ### How to manage multiple installed versions of kubectl
 Read 
