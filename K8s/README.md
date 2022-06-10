@@ -32,6 +32,23 @@ function k8logs() {
 ```
 To use this function, just type `k8logs jummp`. That's it!
 
+### How to log in a pod
+We also have to log in a specific pod to check whether the deployment is great or to test something. It brings us to a terminal prompt to interact with the app. The command is:
+```
+kubectl exec -it pod_name [-n namespace] -- /bin/bash
+```
+To shorten the command, convert it into a bash function:
+```
+klogin() {
+  if [ $# -eq 0 ] 
+  then
+    printf "Error: missing pod name.\nUsage: klogin [namespace] pod-name\n"
+  else
+    kubectl exec -it $1 -- /bin/bash
+  fi
+}
+```
+
 ### How to manage multiple installed versions of kubectl
 Read 
 - https://gist.github.com/ntung/466e6f2724da29b65d768ee2757ffd53
