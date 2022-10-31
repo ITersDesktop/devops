@@ -122,9 +122,27 @@ docker run -it --rm \
   biomodels:latest
 ```
 
-### R010: What is the simple way to test the database connection?
+### R010: How to verify the database connection in a simple way
 
 This tip is often preserved to anyone who wants to verify the connection between the host and the database server. The database host could be in the same cluster or the central pool. The following command is the simple way to do so.
 ```
 telnet mysql-proteomics-biomodels-prod.ebi.ac.uk 1234
 ```
+
+### R011: How to access the application running in a Docker container locally
+We need to publish a port for the application by specifying it in the `docker run -p <your port>:<the port defined in the Dockerfile file`. However, if you want to fix that port in Docker compose, it could be like the instructions given [here](https://stackoverflow.com/a/56510846/865603).
+  ```
+  services:
+  myapp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - private
+    ports:
+      - 3000:3000
+    command:
+      node src/app.js
+  ```
+
+### R012: 
