@@ -5,3 +5,9 @@ The repository has one initial commit at the moment but we find something wrong 
 git update-ref -d HEAD
 ```
 Notes: Do not use `rm -rf .git` of anything like this because it will completely wipe the entire repository including all other branches as we as the branch that we are trying to reset. Also, an issue was discussed [here](https://github.com/microsoft/vscode/issues/44776).
+
+
+https://stackoverflow.com/questions/2739376/definition-of-downstream-and-upstream
+
+# How to undo the last commit
+To undo the last commit means to delete it and move the repository HEAD to the previous commit. The command is `git reset --soft HEAD~1` or `git reset --hard HEAD~1`. The former is used to keep changes in the staged while the latter will delete all latest changes. Read more discussions about it at [https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git/](https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git/).
