@@ -13,3 +13,15 @@ So, to make sure that year will always be shown, use:
 In some settings, selecting text in tmux is disable. However, we can press `CMD + R` on MacOS to select any piece of text and `CMD + C` to copy it.
 
 In particular om MacOS, press `Fn` key with left mouse if using `Terminal.app`. Otherwise, press `Opt` key with left mouse if using `iTerms.app`. Note: not press `Shift` key. 
+
+# Delete the content or empty a file
+The [simple and fast ways](https://stackoverflow.com/questions/22402054/what-is-the-simplest-way-to-delete-the-contents-of-a-file-in-bash) are 
+```bash
+> file.txt
+true > file.txt # a slight variation
+
+truncate -s 0 file.txt
+truncate --size=0 file.txt
+
+cat /dev/null > file.txt
+```

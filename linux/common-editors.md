@@ -25,7 +25,7 @@ I regularly just do `12+↓` and `22+↓`.
 Found [this question](https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim) or [that question](https://stackoverflow.com/questions/2561418/how-to-comment-out-a-block-of-python-code-in-vim) answering all I need.
 
 One way manually
-```
+```bash
 :set number
 :10,12s/^/#
 ```
@@ -34,7 +34,7 @@ to comment the line 10 to 12.
 No plugins or mappings required. Try the built-in "norm" command, which literally executes anything you want on every selected line.
 
 Add # Comments
-```
+```bash
 1. shift V to visually select lines
 2. :'<,'>:norm i//
 ```
