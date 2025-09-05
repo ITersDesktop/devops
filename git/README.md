@@ -22,3 +22,7 @@ But if we want to start tracking changes again, we can undo the previous command
 ```bash
 git update-index --no-assume-unchanged <file>
 ```
+
+# Semantic Commit Messages
+That helps everybody identify the nature of a particular commit, and encourages more frequent commits by breaking and grouping the changes into smaller and more meaningful segments.
+See [Semantic Commit Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) or read [this](https://callmeryan.medium.com/semantic-commit-messages-bcd60f75de1f).
