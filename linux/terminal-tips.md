@@ -82,3 +82,14 @@ nvme0n1     259:0    0   600G  0 disk
 ```
 Voilà!
 
+# Exclude `.DS_store files from tar.gz
+When archiving a directory on MacOS, these files are often included in the result archive file. To exclude them out the archive file, adding the following option.
+```bash
+tar -zcv --exclude='.DS_Store' -f file.tar.gz folder/
+# or
+tar --disable-copyfile --exclude='.DS_Store' -cvzf file.tar.gz folder/
+```
+More generally, using `--exclude='./upload/folder1 --exclude='./docs/largefile.img` to exclude any directories.
+```bash
+tar --exclude='./folder' --exclude='./upload/folder2' -zcvf /backup/filename.tgz .
+```
